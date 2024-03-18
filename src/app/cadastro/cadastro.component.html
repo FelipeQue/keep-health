@@ -5,6 +5,14 @@
     </div>
     <form id="cadastro-form" (ngSubmit)="signup()" [formGroup]="signupInfo">
         <div id="cadastro-inputs">
+            <label for="user-name">Nome:</label>
+            <input
+            id="user-name"
+            name="user-name"
+            type="text"
+            formControlName="userName"
+            required
+            />
             <label for="user-email">E-mail:</label>
             <input
             id="user-email"
