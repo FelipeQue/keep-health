@@ -1,0 +1,34 @@
+<div id="login-container">
+    <div class="login-header">
+        <h1>LOGIN</h1>
+    </div>
+    <form id="login-form" (ngSubmit)="login()" [formGroup]="loginInfo">
+        <div id="login-inputs">
+            <label for="user-email">E-mail:</label>
+            <input
+            id="user-email"
+            name="user-email"
+            type="text"
+            formControlName="userEmail"
+            />
+            <label for="user-password">Senha:</label>
+            <input
+            id="user-password"
+            name="user-password"
+            type="password"
+            formControlName="userPassword"
+            />
+        </div>
+        <div class="login-button">
+            <button type="submit">Entrar</button>
+        </div>
+        <div class="login-button">
+            <button id="bttn-forgot" type="button" (click)="forgotPassword()">Esqueci a senha</button>
+        </div>
+        <div class="login-link">
+            <!-- Caso o usuário clique no botão/link ‘Cadastrar-me’, ele será redirecionado para a tela de cadastro -->
+            <a href="cadastro">Cadastrar-me</a>
+        </div>
+
+    </form>
+</div>
