@@ -1,5 +1,20 @@
-<div class="profile">
+<div class="profile-page">
 
-<p>profile works!</p>
+<div id="profile-container">
 
+<ul>
+<li><label class="profile-label">Nome:</label> {{user.name}}</li>
+<li><label class="profile-label">E-mail:</label> {{user.email}} </li>
+<li><label class="profile-label">Peso:</label> {{user.weightKg}}kg</li>
+<li><label class="profile-label">Altura:</label> {{user.heightCm | cmToMeters}}m</li>
+<li><label class="profile-label">Idade:</label> {{user.dateOfBirth | ageFromDate}}</li>
+<li id="profile-location">
+    <label class="profile-label">Localização:</label>
+    <input type="cep"/> 
+    <button>Pesquisar</button>
+</li>
+</ul>
+
+
+</div>
 </div>

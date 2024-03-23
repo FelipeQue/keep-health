@@ -253,17 +253,18 @@ export class AppComponent {
       id: "teste123",
       name: "Felipe",
       email: "felipe@mail.com",
-      dateOfBirth: "",
+      dateOfBirth: "1983-10-21",
       password: "abcd",
       weightKg: 80,
       heightCm: 186
     },
   ];
 
-  
   constructor(private router: Router){
     localStorage.setItem('foodList',JSON.stringify(this.foodList));
     console.log("Lista de alimentos salva com sucesso no Local Storage.");
+
+    // Atenção: aqui estamos substituindo os dados que porventura estiverem:
     localStorage.setItem('userDatabase',JSON.stringify(this.userDatabase));
     console.log("Lista de pessoas usuárias salva com sucesso no Local Storage.");
   };
