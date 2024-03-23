@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SidebarComponent],
+  imports: [CommonModule, RouterOutlet, SidebarComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -13,6 +15,7 @@ export class AppComponent {
   title = 'keep-health';
 
   foodList: any[] = [
+
       // {
       //    id: 1,
       //    name: "Abacate",
@@ -21,6 +24,7 @@ export class AppComponent {
       //    qttDaysFeed: 3,
       //    imageLink: ""
       //  },
+
        {
         id: 1,
         name: "batata",
@@ -42,6 +46,7 @@ export class AppComponent {
         id: 2,
         name: "morango",
         description: "Fruta vermelha, suculenta e doce, frequentemente usada em sobremesas.",
+        image: "https://bing.com/th?id=OIP.IQXrP4fSkwtGImpZf1Av4AHaFj",
         calories: 31.9,
         serving_size_g: 100,
         fat_total_g: 0.3,
@@ -58,6 +63,7 @@ export class AppComponent {
         id: 3,
         name: "lasanha",
         description: "Prato italiano composto por camadas de massa, queijo e molho, podendo incluir carne ou vegetais.",
+        image: "https://bing.com/th?id=OIP.ErFlHku_Rs0tmPZ1ni5YsgHaE8",
         calories: 157.7,
         serving_size_g: 100,
         fat_total_g: 8.5,
@@ -74,6 +80,7 @@ export class AppComponent {
         id: 4,
         name: "maçã",
         description: "Fruta pomácea de sabor que varia de doce a ácido, consumida fresca ou em receitas.",
+        image: "https://bing.com/th?id=OIP.o7rlPOWm1Zn11QSEms6-VgHaHa",
         calories: 53,
         serving_size_g: 100,
         fat_total_g: 0.2,
@@ -90,6 +97,7 @@ export class AppComponent {
         id: 5,
         name: "pera",
         description: "Fruta de polpa doce e granulosa, apreciada por seu sabor suave e textura.",
+        image: "https://bing.com/th?id=OIP.uXP01zK0pirJyTyt39NQcAHaHa",
         calories: 56.7,
         serving_size_g: 100,
         fat_total_g: 0.1,
@@ -106,6 +114,7 @@ export class AppComponent {
         id: 6,
         name: "farinha branca",
         description: "Pó fino obtido da moagem do trigo, usado como base para pães, bolos e outros.",
+        image: "https://bing.com/th?id=OIP.37ptmS2hXg9KBJNnyLlyAQHaD_",
         calories: 362.6,
         serving_size_g: 100,
         fat_total_g: 1,
@@ -122,6 +131,7 @@ export class AppComponent {
         id: 7,
         name: "ovo",
         description: "Ingrediente fundamental na culinária, rico em proteínas e utilizado em diversas receitas.",
+        image: "https://bing.com/th?id=OIP.ca-8ItIXZuO4sPab1YgmUwHaE8",
         calories: 144.3,
         serving_size_g: 100,
         fat_total_g: 9.4,
@@ -138,6 +148,7 @@ export class AppComponent {
         id: 9,
         name: "arroz",
         description: "Grão de cereal consumido mundialmente, base da alimentação em muitas culturas.",
+        image: "",
         calories: 127.4,
         serving_size_g: 100,
         fat_total_g: 0.3,
@@ -154,6 +165,7 @@ export class AppComponent {
         id: 10,
         name: "queijo",
         description: "Alimento derivado do leite, com uma grande variedade de sabores e texturas.",
+        image: "https://bing.com/th?id=OIP.lDqAUaaN4G-y16N6XuPM6wHaE8",
         calories: 393.9,
         serving_size_g: 100,
         fat_total_g: 33,
@@ -170,6 +182,7 @@ export class AppComponent {
         id: 11,
         name: "batata frita",
         description: "Batatas cortadas em tiras e fritas até ficarem crocantes, um petisco popular.",
+        image: "https://bing.com/th?id=OIP.9poN-AQsX0Ge0sjjL7AMugHaER",
         calories: 317.7,
         serving_size_g: 100,
         fat_total_g: 14.8,
@@ -186,6 +199,7 @@ export class AppComponent {
         id: 12,
         name: "pão",
         description: "Alimento básico preparado com farinha e fermento, assado até formar uma crosta dourada.",
+        image: "https://bing.com/th?id=OIP.moj3eWq9tGHHoKA7b180xgAAAA",
         calories: 261.6,
         serving_size_g: 100,
         fat_total_g: 3.4,
@@ -202,6 +216,7 @@ export class AppComponent {
         id: 13,
         name: "coxinha",
         description: "Salgado brasileiro em forma de gota, recheado com frango e envolto em massa de batata.",
+        image: "https://bing.com/th?id=OIP.7pBYiygvwEzN4B-WPh_LvgHaFV",
         calories: 192.9,
         serving_size_g: 100,
         fat_total_g: 11.3,
@@ -218,6 +233,7 @@ export class AppComponent {
         id: 14,
         name: "sorvete",
         description: "Sobremesa gelada feita com leite ou creme, açúcar e sabores variados.",
+        image: "https://bing.com/th?id=OIP.q1RcsojoCEH4-JSSFE2z8gHaE8",
         calories: 207.1,
         serving_size_g: 100,
         fat_total_g: 11,
@@ -232,29 +248,43 @@ export class AppComponent {
       }
   ];
 
+  userDatabase: any[] = [
+    {
+      id: "teste123",
+      name: "Felipe",
+      email: "felipe@mail.com",
+      dateOfBirth: "",
+      password: "abcd",
+      weightKg: 80,
+      heightCm: 186
+    },
+  ];
 
-  constructor(){
+  
+  constructor(private router: Router){
     localStorage.setItem('foodList',JSON.stringify(this.foodList));
     console.log("Lista de alimentos salva com sucesso no Local Storage.");
+    localStorage.setItem('userDatabase',JSON.stringify(this.userDatabase));
+    console.log("Lista de pessoas usuárias salva com sucesso no Local Storage.");
   };
 
+  // Para fazer com que o sidebar não apareça nas telas de login e cadastro (em combinação com um *ngIf no HTML):
+  get isAuthPage(): boolean {
+    const authPages = ['/login', '/register', '/cadastro', '/'];
+    return authPages.includes(this.router.url);
+  }
 
 
 
+// Fim do componente
+};
 
-
-}
-
-
-
-
-
-// SOBRE O LOCAL STORAGE NOT DEFINED:
+// SOBRE O ERRO "LOCAL STORAGE NOT DEFINED":
   // Lá no angular.json, onde tem:
   // "development": {
   //   "optimization": false,
   //   "extractLicenses": false,
   //   "sourceMap": true,
-  //   "ssr": false, <- eu acrescentei essa para resolver o problema do localStorage not defined.
-  //   "prerender": false <- eu acrescentei essa para resolver o problema do localStorage not defined.
+  //   "ssr": false, <- eu acrescentei essa linha para resolver o problema do localStorage not defined.
+  //   "prerender": false <- eu acrescentei essa outra linha para resolver o problema do localStorage not defined.
   // }
