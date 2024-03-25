@@ -1,19 +1,42 @@
 <div id="diet-detail-page">
 
-<h2>{{ food.name }}</h2>
-<div class="image">
-  <img [src]="food.image" alt="Food image" />
-</div>
-<div class="details">
-  <p><strong>Descrição:</strong> {{food.description}}</p>
-  <p><strong>Calorias:</strong> {{food.calories}}kcal</p>
-  <p><strong>Proteinas:</strong> {{food.protein_g}}g</p>
-  <p><strong>Potássio:</strong> {{food.potassium_mg}}mg </p>
-  <p><strong>Colesterol:</strong> {{food.cholesterol_mg}}mg/dL</p>
-  <p><strong>Teor de gordura:</strong> {{food.fat_total_g}}%</p>
-</div>
+  <div class="diet-detail-container">
 
+    <div class="diet-detail-header">
+      <h2>{{ food.name }}</h2>
+    </div>
 
+    <div class="diet-detail-body">
 
+      <div class="image">
+        <img [src]="food.image" alt="Food image" />
+        <div class="description">
+        <p>{{food.description}}</p>
+        </div>
+      </div>
+      <div class="details">
+        <ul>
+        <li><strong>Calorias:</strong> {{food.calories}}kcal</li>
+        <li><strong>Carboidratos:</strong> {{food.carbohydrates_total_g}}g</li>
+        <li><strong>Proteinas:</strong> {{food.protein_g}}g</li>
+        <li><strong>Total de gordura:</strong> {{food.fat_total_g}}g</li>
+        <li><strong>Gordura saturada:</strong> {{food.fat_saturated_g}}g</li>
+        <li><strong>Potássio:</strong> {{food.potassium_mg}}mg </li>
+        <li><strong>Colesterol:</strong> {{food.cholesterol_mg}}mg</li>
+        <li><strong>Sódio:</strong> {{food.sodium_mg}}mg</li>
+        <li><strong>Fibras:</strong> {{food.fiber_g}}g</li>
+        <li><strong>Açúcares:</strong> {{food.sugar_g}}g</li>
+        <li><strong>Tamanho da porção:</strong> {{food.serving_size_g}}g</li>
+      </ul>
+      </div>
 
+    </div>
+
+    <div class="diet-detail-footer">
+      <button (click)="goBack()">Voltar</button>
+    </div>
+    <!-- Fim do containter: -->
+  </div>
+
+  <!-- Fim da "página" -->
 </div>
