@@ -29,6 +29,39 @@
             formControlName="userDob"
             required
             />
+
+            <div class="body-info">
+                <div>
+                <label for="user-weight">Peso (kg):</label>
+                <input
+                id="user-weight"
+                name="user-weight"
+                type="number"
+                formControlName="userWeight"
+                required
+                />
+                </div>
+                <div>
+                <label for="user-height">Altura (cm):</label>
+                <input
+                id="user-height"
+                name="user-height"
+                type="number"
+                formControlName="userHeight"
+                required
+                />
+                </div>
+            </div>
+
+            <label for="user-cep">CEP:</label>
+            <input
+            id="user-cep"
+            name="user-cep"
+            type="text"
+            formControlName="userCep"
+            placeholder="00000-000"
+            required/>
+
             <label for="user-password">Senha:</label>
             <input
             id="user-password"
@@ -50,7 +83,7 @@
             <button type="submit">Cadastrar</button>
         </div>
         <div class="cadastro-button">
-            <a href="login">
+            <a [routerLink]="['/login']">
             <button id="bttn-goback" type="button">Voltar</button>
             </a>
         </div>

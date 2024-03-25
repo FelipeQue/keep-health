@@ -1,0 +1,26 @@
+<div class="diet-home">
+
+
+<div id="diet-search">
+    <p>Para ajudar a montar o seu plano alimentar, nesta seção você pode consultar os macronutrientes dos alimentos. Utilize o campo de busca abaixo e selecione o alimento para mais informações.</p>
+    <form id="diet-form">
+    <input type="text" [(ngModel)]="searchInput" [ngModelOptions]="{standalone: true}">
+    <button (click)="searchFood()">Pesquisar</button>
+    </form>
+</div>
+    
+
+<div class="rendered-list">
+    <div *ngFor="let food of listOfResults" (click)="redirectToDetail(food.name)">
+        <div class="food-card">
+            <div class="card-header">
+            <h2 class="card-name">{{food?.name}}</h2>
+            <img src="../../assets/images/keep-health-logo-circle.png">
+            
+            </div>
+            <div class="card-img"><img [src]="food?.image" [alt]="food?.name"></div>
+            <span class="card-description">{{food?.description}}</span>      
+        </div>
+</div>
+
+</div>
