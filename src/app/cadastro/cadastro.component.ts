@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, InjectionToken } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
@@ -8,7 +8,7 @@ import { DOCUMENT } from '@angular/common';
   standalone: true,
   imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.css'
+  styleUrl: './cadastro.component.css',
 })
 export class CadastroComponent {
 
@@ -24,6 +24,7 @@ export class CadastroComponent {
   });
 
   localStorage;
+
   constructor(private router: Router, @Inject(DOCUMENT) private document: Document) {
     this.localStorage = document.defaultView?.localStorage;
   };
@@ -45,7 +46,6 @@ export class CadastroComponent {
         } else {
           this.addUser(this.signupInfo.value.userName, this.signupInfo.value.userEmail, this.signupInfo.value.userDob, this.signupInfo.value.userWeight, this.signupInfo.value.userHeight, this.signupInfo.value.userCep, this.signupInfo.value.userPassword);
           alert(`O cadastro da pessoa com o e-mail ${this.signupInfo.value.userEmail} foi realizado com sucesso!`);
-
           // Não esquecer de limpar os campos depois do cadastro realizado:
           this.signupInfo.reset();
         }
@@ -63,10 +63,11 @@ export class CadastroComponent {
       name: name,
       email: email,
       dateOfBirth: dateOfBirth,
-      weight: weight,
-      height: height,
+      weightKg: weight,
+      heightCm: height,
       cep: cep,
       password: password,
+      auth: false,
     };
     let userDatabase = this.getStorage();
     userDatabase.push(newUser);
@@ -84,7 +85,6 @@ export class CadastroComponent {
       return [];
     };
   };
-
 
 
   

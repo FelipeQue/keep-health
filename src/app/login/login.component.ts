@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
     userPassword: new FormControl(''),
   });
 
+  users: any[] = [];
+
   // Abaixo é utilizado o Inject e DOCUMENT (importados mais acima) para evitar o erro de localStorage. Ao que parece o localStorage, por ser da API do navegador, não consegue ser acessado pelo servidor, então por mais o que código ficasse totalmente funcional, eu recebia no terminal a mensagem de erro "ERROR ReferenceError: localStorage is not defined". Encontramos, então, este workaround:
 
   localStorage;
@@ -26,26 +28,34 @@ export class LoginComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.getStorage();
-    // this.createStorage();
+    this.users = this.getStorage();
+    this.createUser();
   };
 
-  // (A função createStorage se tornou obsoleta com o advento da página de cadastro. Ela foi criada para poder testarmos as funcionalidades do exercício 4 da semana 9.)
+  newUser: any = {
+    id: "teste123",
+    name: "Felipe",
+    email: "felipe@mail.com",
+    dateOfBirth: "1983-10-21",
+    cep: "88053-655",
+    password: "abcd",
+    weightKg: 80,
+    heightCm: 186,
+    auth: false,
+  };
 
-  // createStorage() {
-  //   let newUser = {
-  //     email: "felipe@mail.com",
-  //     password: "abcd"
-  //   };
-  //   let userDatabase = this.getStorage();
-  //   if (userDatabase.find((user: { email: string; }) => user.email == newUser.email)) {
-  //     console.log("Pessoa usuária já cadastrada.");
-  //   } else {
-  //     console.log("Pessoa usuária cadastrada com sucesso.");
-  //     userDatabase.push(newUser);
-  //     this.localStorage?.setItem("userDatabase", JSON.stringify(userDatabase));
-  //   }
-  // };
+  createUser() {
+    let userDatabase = this.getStorage();
+    if (userDatabase.find((user: { email: string; }) => user.email == this.newUser.email)) {
+      // console.log("Pessoa usuária já cadastrada.");
+    } else {
+      userDatabase.push(this.newUser);
+      this.localStorage?.setItem("userDatabase", JSON.stringify(userDatabase));
+      console.log("Pessoa usuária cadastrada com sucesso.");
+    }
+
+  };
+
 
   getStorage() {
     const emptyDatabase: string[] = [];
@@ -71,8 +81,18 @@ export class LoginComponent implements OnInit {
 
         // Verifica correspondência entre usuárie e senha:
         if (userFound.password == this.loginInfo.value.userPassword) {
+          this.users = this.getStorage();
+          //Aqui quero deixar uma informação no localStorage sobre qual pessoa está logada:
+          const updatedUsers = this.users.map((user) => {
+            if (user.email === userFound.email) {
+              return { ...user, auth: true };
+            }
+            return user;
+          });
+          this.users = updatedUsers;
+          this.localStorage?.setItem("userDatabase", JSON.stringify(this.users));
           this.router.navigate(["home"]);
-          // console.log("Login realizado.")
+          console.log("Login realizado.")
 
         } else {
           alert("Senha incorreta. Verifique se digitou corretamente.");
@@ -97,10 +117,15 @@ export class LoginComponent implements OnInit {
       let userFound = this.checkEmail();
       if (userFound) {
         let userDatabase = this.getStorage();
-        let userFound = userDatabase.pop((user: { email: string | null | undefined; }) => user.email == this.loginInfo.value.userEmail);
-        userFound.password = "a1b2c4d4";
-        userDatabase.push(userFound);
-        this.localStorage?.setItem("userDatabase", JSON.stringify(userDatabase));
+        console.log(userFound);
+        
+        const updatedUsers = userDatabase.map((user: { email: any; }) => {
+          if (user.email === userFound.email) {
+            return { ...user, password: "a1b2c4d4" };
+          }
+            return user;
+        });
+        this.localStorage?.setItem("userDatabase", JSON.stringify(updatedUsers));
         alert("Sua senha foi alterada para a senha padrão ‘a1b2c4d4’. Faça seu login utilizando essa senha.")
       } else {
         alert("Pessoa usuária não cadastrada.")

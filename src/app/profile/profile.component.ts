@@ -3,6 +3,7 @@ import { CmToMetersPipe } from '../pipes/cm-to-meters.pipe';
 import { AgeFromDatePipe } from '../pipes/age-from-date.pipe';
 import { AddressService } from '../services/address.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -26,13 +27,17 @@ export class ProfileComponent {
     };
   };
 
-  checkUserId(id: any) {
+  checkLoggedUser() {
     let userDatabase = this.getStorage();
-    return userDatabase.find((user: { id: string | null | undefined; }) => user.id == id);
+    return userDatabase.find((user: { auth: boolean | null | undefined; }) => user.auth == true);
   };
 
-  constructor(private addressService: AddressService){
-    this.user = this.checkUserId("teste123");
+  constructor(private addressService: AddressService, private router: Router){
+    this.user = this.checkLoggedUser();
+    if (!this.user) {
+      alert("Please log in.");
+      this.router.navigate(["login"]);
+    }
 
   };
 

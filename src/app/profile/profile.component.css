@@ -24,6 +24,7 @@
 
 #profile-container li {
     padding: 5px;
+    padding-right: 10px;
 }
 
 #profile-location {
@@ -51,6 +52,7 @@
     font-size: 1em;
     cursor: pointer;
     margin-right: 30px;
+    margin-left: 10px;
 }
 
 #profile-container button:hover {

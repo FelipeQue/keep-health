@@ -248,27 +248,15 @@ export class AppComponent {
       }
   ];
 
-  userDatabase: any[] = [
-    {
-      id: "teste123",
-      name: "Felipe",
-      email: "felipe@mail.com",
-      dateOfBirth: "1983-10-21",
-      cep: "88053-655",
-      password: "abcd",
-      weightKg: 80,
-      heightCm: 186
-    },
-  ];
-
   constructor(private router: Router){
     localStorage.setItem('foodList',JSON.stringify(this.foodList));
     console.log("Lista de alimentos salva com sucesso no Local Storage.");
 
     // Atenção: aqui estamos substituindo os dados que porventura estiverem:
-    localStorage.setItem('userDatabase',JSON.stringify(this.userDatabase));
-    console.log("Lista de pessoas usuárias salva com sucesso no Local Storage.");
+
+    
   };
+
 
   // Para fazer com que o sidebar não apareça nas telas de login e cadastro (em combinação com um *ngIf no HTML):
   get isAuthPage(): boolean {

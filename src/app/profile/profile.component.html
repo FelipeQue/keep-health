@@ -1,23 +1,25 @@
 <div class="profile-page">
 
-<div id="profile-container">
+    <div id="profile-container">
 
-<ul>
-<li><label class="profile-label">Nome:</label> {{user.name}}</li>
-<li><label class="profile-label">E-mail:</label> {{user.email}} </li>
-<li><label class="profile-label">Peso:</label> {{user.weightKg}}kg</li>
-<li><label class="profile-label">Altura:</label> {{user.heightCm | cmToMeters}}m</li>
-<li><label class="profile-label">Idade:</label> {{user.dateOfBirth | ageFromDate}}</li>
-<li id="profile-location">
-    <label class="profile-label">Localização:</label>
-    <input type="cep"/> 
-    <button (click)="searchAddress()">Pesquisar</button>
-</li>
-<li *ngIf="address"><label class="profile-label">Endereço:</label>
-{{ address.logradouro }} - {{ address.bairro }} - {{ address.localidade }}/{{ address.uf }}
-</li>
-</ul>
+        <ul>
+            <li><label class="profile-label">Nome:</label> {{user.name}}</li>
+            <li><label class="profile-label">E-mail:</label> {{user.email}} </li>
+            <li><label class="profile-label">Peso:</label> {{user.weightKg}}kg</li>
+            <li><label class="profile-label">Altura:</label> {{user.heightCm | cmToMeters}}m</li>
+            <li><label class="profile-label">Idade:</label> {{user.dateOfBirth | ageFromDate}}</li>
+            <li id="profile-location">
+                <label class="profile-label">CEP: </label>
+                <!-- <input type="cep" readonly/> -->
+                <span>{{user.cep}} </span>
+                <button (click)="searchAddress()">Pesquisar</button>
+            </li>
+            <li *ngIf="address"><label class="profile-label">Endereço:</label>
+                {{ address.logradouro }}, {{ address.complemento }} — 
+                {{ address.bairro }} —
+                {{ address.localidade }}/{{ address.uf }}.</li>
+        </ul>
 
 
-</div>
+    </div>
 </div>
