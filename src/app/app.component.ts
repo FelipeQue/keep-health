@@ -96,7 +96,7 @@ export class AppComponent {
       {
         id: 5,
         name: "pera",
-        description: "Fruta de polpa doce e granulosa, apreciada por seu sabor suave e textura.",
+        description: "Fruta de polpa doce, apreciada por seu sabor suave e textura.",
         image: "https://bing.com/th?id=OIP.uXP01zK0pirJyTyt39NQcAHaHa",
         calories: 56.7,
         serving_size_g: 100,
@@ -148,7 +148,7 @@ export class AppComponent {
         id: 9,
         name: "arroz",
         description: "Grão de cereal consumido mundialmente, base da alimentação em muitas culturas.",
-        image: "",
+        image: "https://www.bing.com/th?id=OIP.xH6BADAcCrI_yrUL22uZIAHaHa&w=208&h=208&c=8&rs=1&qlt=90&o=6&dpr=2&pid=3.1&rm=2",
         calories: 127.4,
         serving_size_g: 100,
         fat_total_g: 0.3,

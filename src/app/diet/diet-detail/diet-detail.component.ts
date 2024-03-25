@@ -10,17 +10,39 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DietDetailComponent {
 
-  dietId: string = "";
+  foodName: string = "";
+  food: any = {};
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router){};
 
+  getStorage(storageName: string) {
+    const storage = localStorage.getItem(storageName);
+    if (!!storage) {
+      return JSON.parse(storage);
+    } else {
+      console.log("Não foi encontrada lista de alimentos.")
+      return [];
+    };
+  };
+
   ngOnInit(){
     this.activatedRoute.params.subscribe((parameters)=>{
-      console.log(parameters);
-      // this.musicId = parametros.identificador; <- esse não funciona.
-      this.dietId = parameters['id'];
-    });    
-    console.log(this.router.url); // É assim que a gente descobre se a tela é para ser create ou update, daí mandamo um if this.router.url é create etc etc.
+      // console.log(parameters);
+      // this.foodName = parameters.id; <- esse não funciona.
+      this.foodName = parameters['id'];
+    });
+    
+  let listOfFoods = this.getStorage("foodList");
+
+  let searchedFoods = listOfFoods.filter((searchedFood: { name: string | undefined; }) => searchedFood.name == this.foodName);
+
+  this.food = searchedFoods[0];
+
+  
+
+
+
+
   };
 
 

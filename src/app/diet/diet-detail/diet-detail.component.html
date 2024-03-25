@@ -1,1 +1,19 @@
-<p>diet-detail works!</p>
+<div id="diet-detail-page">
+
+<h2>{{ food.name }}</h2>
+<div class="image">
+  <img [src]="food.image" alt="Food image" />
+</div>
+<div class="details">
+  <p><strong>Descrição:</strong> {{food.description}}</p>
+  <p><strong>Calorias:</strong> {{food.calories}}kcal</p>
+  <p><strong>Proteinas:</strong> {{food.protein_g}}g</p>
+  <p><strong>Potássio:</strong> {{food.potassium_mg}}mg </p>
+  <p><strong>Colesterol:</strong> {{food.cholesterol_mg}}mg/dL</p>
+  <p><strong>Teor de gordura:</strong> {{food.fat_total_g}}%</p>
+</div>
+
+
+
+
+</div>
