@@ -11,7 +11,10 @@
 <li id="profile-location">
     <label class="profile-label">Localização:</label>
     <input type="cep"/> 
-    <button>Pesquisar</button>
+    <button (click)="searchAddress()">Pesquisar</button>
+</li>
+<li *ngIf="address"><label class="profile-label">Endereço:</label>
+{{ address.logradouro }} - {{ address.bairro }} - {{ address.localidade }}/{{ address.uf }}
 </li>
 </ul>
 

@@ -254,6 +254,7 @@ export class AppComponent {
       name: "Felipe",
       email: "felipe@mail.com",
       dateOfBirth: "1983-10-21",
+      cep: "88053-655",
       password: "abcd",
       weightKg: 80,
       heightCm: 186

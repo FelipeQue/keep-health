@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
 import { CmToMetersPipe } from '../pipes/cm-to-meters.pipe';
 import { AgeFromDatePipe } from '../pipes/age-from-date.pipe';
+import { AddressService } from '../services/address.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CmToMetersPipe, AgeFromDatePipe],
+  imports: [CmToMetersPipe, AgeFromDatePipe, CommonModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
 
   user: any;
+  address: any | undefined;
 
   getStorage() {
     const users = localStorage.getItem("userDatabase");
@@ -28,9 +31,24 @@ export class ProfileComponent {
     return userDatabase.find((user: { id: string | null | undefined; }) => user.id == id);
   };
 
-  constructor(){
+  constructor(private addressService: AddressService){
     this.user = this.checkUserId("teste123");
+
   };
+
+  searchAddress() {
+    this.addressService.getAdress(this.user.cep).subscribe(
+      {
+        next: (response): void => {
+          this.address = response;
+          console.log(response);
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      }
+    )
+  }
   
 
 
