@@ -8,7 +8,7 @@ import { DOCUMENT } from '@angular/common';
   standalone: true,
   imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.css',
+  styleUrl: './cadastro.component.scss',
 })
 export class CadastroComponent {
 
