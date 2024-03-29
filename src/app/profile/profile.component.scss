@@ -15,15 +15,13 @@
     padding-top: 20px;
     padding-bottom: 20px;
     font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-#profile-container ul {
-    list-style: none;
-}
-
-#profile-container li {
-    padding: 5px;
-    padding-right: 10px;
+    ul {
+        list-style: none;
+    };
+    li {
+        padding: 5px;
+        padding-right: 10px;
+    }
 }
 
 #profile-location {
@@ -52,8 +50,7 @@
     cursor: pointer;
     margin-right: 30px;
     margin-left: 10px;
-}
-
-#profile-container button:hover {
-    background-color: #0056b3;
+    &:hover {
+        background-color: #0056b3;
+    }
 }

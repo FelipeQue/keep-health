@@ -29,18 +29,16 @@
     @include flex-column-left;
     width: 60%;
     margin-bottom: 10px;
-}
-
-#login-inputs label {
-    text-align: left;
-    padding-top: 10px;
-    padding-bottom: 3px;
-}
-
-#login-inputs input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    label {
+        text-align: left;
+        padding-top: 10px;
+        padding-bottom: 3px;
+    };
+    input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 }
 
 .login-button button {
@@ -53,42 +51,37 @@
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 5px;
-}
-
-.login-button button:hover {
-    background-color: #0056b3;
+    &:hover {
+        background-color: #0056b3;
+    }
 }
 
 #bttn-forgot {
     background-color:#80D0C7;
-}
-
-#bttn-forgot:hover {
-    background-color: #4FAE9B;
+    &:hover {
+        background-color: #4FAE9B;
+    }
 }
 
 .login-link {
     padding-top: 10px;
-}
-
-.login-link a {
-    text-decoration: none;
-    font-weight: 600;
-    color: #007bff;
-}
-
-.login-link a:hover {
-    color: #0056b3;
-}
-
-.login-link a:visited:hover {
-    color: #0056b3;
-}
-
-.login-link a:active {
-    color: #79BAFA;
-}
-
-.login-link a:visited:active {
-    color: #79BAFA;
+    a {
+        text-decoration: none;
+        font-weight: 600;
+        color: #007bff;
+        &:hover {
+            color: #0056b3;
+        };
+        &:active {
+            color: #79BAFA;
+        };
+        &:visited {
+            &:hover {
+                color: #0056b3;
+            };
+            &:active {
+                color: #79BAFA;
+            }
+        }
+    }
 }

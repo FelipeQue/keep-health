@@ -29,33 +29,29 @@
     @include flex-column-left;
     width: 60%;
     margin-bottom: 10px;
-}
-
-#cadastro-inputs label {
-    text-align: left;
-    padding-top: 10px;
-    padding-bottom: 3px;
-}
-
-#cadastro-inputs input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    label {
+        text-align: left;
+        padding-top: 10px;
+        padding-bottom: 3px;
+    };
+    input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 }
 
 .body-info {
     display: flex;
     width: 100%;
     height: 100%;
-}
-
-.body-info div {
-    display: flex;
-    flex-direction: column;
-}
-
-.body-info input{
-    width: 85%;
+    div {
+        display: flex;
+        flex-direction: column;
+    };
+    input{
+        width: 85%;
+    }
 }
 
 .cadastro-button button {
@@ -68,16 +64,14 @@
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 5px;
-}
-
-.cadastro-button button:hover {
-    background-color: #0056b3;
+    &:hover {
+        background-color: #0056b3;
+    }
 }
 
 #bttn-goback {
     background-color:#80D0C7;
-}
-
-#bttn-goback:hover {
-    background-color: #4FAE9B;
+    &:hover {
+        background-color: #4FAE9B;
+    }
 }
