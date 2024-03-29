@@ -1,3 +1,5 @@
+@import '../../../../assets/styles/variables';
+
 .header {
     height: 4em;
     width: 100%;
@@ -5,7 +7,7 @@
     top: 0;
     left: 0;
     background-color: #0093E9;
-    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    background-image: $gradientMain;
     display: flex;
     align-items: center;
     justify-content: flex-end;

@@ -1,3 +1,5 @@
+@import '../../../assets/styles/variables';
+
 #diet-detail-page {
     padding-top: 10vh;
     display: flex;
@@ -27,7 +29,7 @@
     margin-bottom: 10px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    background-image: linear-gradient(160deg, #80D0C7 0%,  #40A8D3 100%);
+    background-image: $gradientMain;
 }
 
 .diet-detail-header h2 {
