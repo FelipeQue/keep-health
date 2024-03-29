@@ -12,7 +12,16 @@
             type="text"
             formControlName="userName"
             required
+            [ngClass]="{'error-border': (signupInfo.controls.userName.dirty ||
+        signupInfo.controls.userName.touched) &&
+        signupInfo.controls.userName.errors}"
             />
+            <span class="error-message"
+            *ngIf="(signupInfo.controls.userName.dirty ||
+            signupInfo.controls.userName.touched) &&
+            signupInfo.controls.userName.errors &&
+            signupInfo.controls.userName.errors['required']"
+            >Preencha seu nome</span>
             <label for="user-email">E-mail:</label>
             <input
             id="user-email"
@@ -20,7 +29,16 @@
             type="text"
             formControlName="userEmail"
             required
+            [ngClass]="{'error-border': (signupInfo.controls.userEmail.dirty ||
+        signupInfo.controls.userEmail.touched) &&
+        signupInfo.controls.userEmail.errors}"
             />
+            <span class="error-message"
+            *ngIf="(signupInfo.controls.userEmail.dirty ||
+            signupInfo.controls.userEmail.touched) &&
+            signupInfo.controls.userEmail.errors &&
+            signupInfo.controls.userEmail.errors['required']"
+            >Preencha seu e-mail</span>
             <label for="user-dob">Data de nascimento:</label>
             <input
             id="user-dob"
@@ -28,7 +46,16 @@
             type="date"
             formControlName="userDob"
             required
+            [ngClass]="{'error-border': (signupInfo.controls.userDob.dirty ||
+        signupInfo.controls.userDob.touched) &&
+        signupInfo.controls.userDob.errors}"
             />
+            <span class="error-message"
+            *ngIf="(signupInfo.controls.userDob.dirty ||
+            signupInfo.controls.userDob.touched) &&
+            signupInfo.controls.userDob.errors &&
+            signupInfo.controls.userDob.errors['required']"
+            >Preencha sua data de nascimento</span>
 
             <div class="body-info">
                 <div>
@@ -39,7 +66,16 @@
                 type="number"
                 formControlName="userWeight"
                 required
+                [ngClass]="{'error-border': (signupInfo.controls.userWeight.dirty ||
+        signupInfo.controls.userWeight.touched) &&
+        signupInfo.controls.userWeight.errors}"
                 />
+                <span class="error-message"
+            *ngIf="(signupInfo.controls.userWeight.dirty ||
+            signupInfo.controls.userWeight.touched) &&
+            signupInfo.controls.userWeight.errors &&
+            signupInfo.controls.userWeight.errors['min']">
+            Talvez você não se sinta à vontade informado o seu peso. Tudo bem. Apenas coloque um valor diferente de zero neste campo.</span>
                 </div>
                 <div>
                 <label for="user-height">Altura (cm):</label>
@@ -49,7 +85,16 @@
                 type="number"
                 formControlName="userHeight"
                 required
+                [ngClass]="{'error-border': (signupInfo.controls.userHeight.dirty ||
+        signupInfo.controls.userHeight.touched) &&
+        signupInfo.controls.userHeight.errors}"
                 />
+                <span class="error-message"
+            *ngIf="(signupInfo.controls.userHeight.dirty ||
+            signupInfo.controls.userHeight.touched) &&
+            signupInfo.controls.userHeight.errors &&
+            signupInfo.controls.userHeight.errors['min']"
+            >Sua altura não pode ser zero</span>
                 </div>
             </div>
 
@@ -60,7 +105,17 @@
             type="text"
             formControlName="userCep"
             placeholder="00000-000"
-            required/>
+            required
+            [ngClass]="{'error-border': (signupInfo.controls.userCep.dirty ||
+        signupInfo.controls.userCep.touched) &&
+        signupInfo.controls.userCep.errors}"
+            />
+            <span class="error-message"
+            *ngIf="(signupInfo.controls.userCep.dirty ||
+            signupInfo.controls.userCep.touched) &&
+            signupInfo.controls.userCep.errors &&
+            signupInfo.controls.userCep  .errors['required']"
+            >Preencha o seu CEP</span>
 
             <label for="user-password">Senha:</label>
             <input
@@ -69,7 +124,23 @@
             type="password"
             formControlName="userPassword"
             required
+            [ngClass]="{'error-border': (signupInfo.controls.userPassword.dirty ||
+        signupInfo.controls.userPassword.touched) &&
+        signupInfo.controls.userPassword.errors}"
             />
+            <span class="error-message"
+            *ngIf="(signupInfo.controls.userPassword.dirty ||
+            signupInfo.controls.userPassword.touched) &&
+            signupInfo.controls.userPassword.errors &&
+            signupInfo.controls.userPassword.errors['required']"
+            >Escolha uma senha</span>
+            <span class="error-message"
+            *ngIf="(signupInfo.controls.userPassword.dirty &&
+            signupInfo.controls.userPassword.touched) &&
+            signupInfo.controls.userPassword.errors &&
+            signupInfo.controls.userPassword.errors['minlength']"
+            >Sua senha deve ter pelo menos 4 caracteres</span>
+
             <label for="confirm-password">Confirmar senha:</label>
             <input
             id="confirm-password"
@@ -77,7 +148,22 @@
             type="password"
             formControlName="confirmPassword"
             required
+            [ngClass]="{'error-border': (signupInfo.controls.confirmPassword.dirty ||
+        signupInfo.controls.confirmPassword.touched) &&
+        signupInfo.controls.confirmPassword.errors}"
             />
+            <span class="error-message"
+            *ngIf="(signupInfo.controls.confirmPassword.dirty ||
+            signupInfo.controls.confirmPassword.touched) &&
+            signupInfo.controls.confirmPassword.errors &&
+            signupInfo.controls.confirmPassword.errors['required']"
+            >Confirme sua senha</span>
+            <span class="error-message"
+            *ngIf="(signupInfo.controls.confirmPassword.dirty &&
+            signupInfo.controls.confirmPassword.touched) &&
+            signupInfo.controls.confirmPassword.errors &&
+            signupInfo.controls.confirmPassword.errors['minlength']"
+            >Sua senha deve ter pelo menos 4 caracteres</span>
         </div>
         <div class="cadastro-button">
             <button type="submit">Cadastrar</button>
