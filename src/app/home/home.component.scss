@@ -50,7 +50,6 @@
     flex-direction: column;
 }
 
-
 // Lista de cards:
 
 .rendered-list {
@@ -90,24 +89,28 @@
         opacity: .5;
     };
     padding-top: 5px;
-    padding-bottom: 0px;
+    padding-bottom: 10px;
 };
 
-.card-name {
-    font-size: 1.2rem;
-    // background-color: red;
+.card-date {
+    font-size: 1.1rem;
     margin-bottom: 10px;
     color: black;
-    padding: 0;
-    padding-bottom: 10px;
+    padding-top: 5px;
     margin: 0 auto;
     width: 100%;
+    letter-spacing: 0.05em;
     // text-transform: uppercase;
 };
 
 .card-type {
+    width: 100%;
     text-transform: uppercase;
     font-size: 1rem;
+    text-align: right;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 10px;
 };
 
 .card-img {
@@ -134,5 +137,14 @@
     background-color: rgba(249, 249, 249, 0.8);
     border-radius: 10px;
     padding: 10px;
-    margin-bottom: 12px;
+    margin-bottom: 5px;
+}
+
+.footer {
+    color: lightgrey;
+    font-size: 0.8em;
+    padding-top: 2em;
+    a {
+        color: lightgray;
+    }
 }

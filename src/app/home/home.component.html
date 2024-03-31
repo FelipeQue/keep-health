@@ -4,13 +4,13 @@
 
         <p-button (click)="showDialog()" icon="pi pi-external-link" label="Adicionar atividade" size="large"></p-button>
 
-        <p-dialog styleClass="workout-dialog" [(visible)]="visible"
+        <p-dialog [(visible)]="visible"
             [breakpoints]="{ '480px': '100vw','768px': '80','1024px': '70vw' }" [style]="{width: '60vw'}">
 
-            <ng-template pTemplate="header">
+            <ng-template class="custom-header" pTemplate="header">
                 <p>Adicione uma nova atividade</p>
             </ng-template>
-
+            
             <div [formGroup]="newWorkout" class="add-workout-form">
 
                 <label for="workout-type">Escolha o tipo do exercício:</label>
@@ -33,18 +33,19 @@
             </div>
 
             <ng-template pTemplate="footer">
-                <p-button (click)="visible = false" label="Cancelar"></p-button>
-                <p-button (click)="saveWorkout()" label="Salvar"></p-button>
+                <p-button (click)="visible = false" type="cancel" severity="secondary" label="Cancelar"></p-button>
+                <p-button (click)="saveWorkout()" type="submit" label="Salvar"></p-button>
             </ng-template>
-
+        
         </p-dialog>
+
     </div>
 
     <div class="rendered-list">
         <div *ngFor="let activity of listOfWorkouts">
             <div class="workout-card">
                 <div class="card-header">
-                    <h3 class="card-type">{{activity.type}}</h3>
+                    <h3 class="card-date">{{activity.date| dateFormat}}</h3>
                     <img src="../../assets/images/keep-health-logo-circle.png">
                 </div>
                 
@@ -55,14 +56,16 @@
                     <img *ngIf="activity.type == 'Bicicleta'" [src]="workoutTypes[3].image" [alt]="activity.type">
                     <img *ngIf="activity.type == 'Dança'" [src]="workoutTypes[4].image" [alt]="activity.type">
                     <img *ngIf="activity.type == 'Musculação'" [src]="workoutTypes[5].image" [alt]="activity.type">
-                    <img *ngIf="activity.type == 'Ioga'" [src]="workoutTypes[6].image" [alt]="activity.type">
-                    <img *ngIf="activity.type == 'Esporte'" [src]="workoutTypes[7].image" [alt]="activity.type">
+                    <img *ngIf="activity.type == 'Esporte'" [src]="workoutTypes[6].image" [alt]="activity.type">
+                    <img *ngIf="activity.type == 'Ioga'" [src]="workoutTypes[7].image" [alt]="activity.type">
+                    
                 </div>
 
-                <h2 class="card-name">{{activity.date | dateFormat}}</h2>
+                
                 <span class="card-description">{{activity.title}}</span>
                 <span *ngIf="activity.distance" class="card-description">Distância: {{activity.distance}} m</span>
                 <span *ngIf="activity.time" class="card-description">Tempo: {{activity.time}}</span>
+                <div class="card-type"> {{activity.type}} </div>
                 
             </div>
         </div>
@@ -77,4 +80,4 @@
 
     </div>
 
-    <footer class="footer"><a href="https://www.freepik.com/free-vector/running-sweat-concept-illustration_72470723.htm#query=jog%20green&position=2&from_view=author&uuid=9e382247-7a1a-4744-85a5-bca6f3fc50de">Image by storyset</a> on Freepik</footer>
+    <footer class="footer" *ngIf="listOfWorkouts[0]"><a href="https://www.freepik.com/author/stories">Imagens criadas por Storyset</a> lá no Freepik.</footer>

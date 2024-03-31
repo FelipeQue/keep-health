@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { provideAnimations, provideNoopAnimations } from '@angular/platform-browser/animations';
@@ -62,7 +62,11 @@ export class HomeComponent {
     const emptyDatabase: string[] = [];
     const workouts = localStorage.getItem("activities");
     if (!!workouts) {
-      return JSON.parse(workouts);
+      let parsedWorkouts = JSON.parse(workouts);
+
+      // Decidi ordenar esta lista por data, para mostrar a lista de exercícios em ordem cronológica.
+      parsedWorkouts.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      return parsedWorkouts;
     } else {
       localStorage.setItem("activities", JSON.stringify(emptyDatabase));
       return [];
@@ -81,6 +85,22 @@ export class HomeComponent {
     workouts.push(newWorkout);
     localStorage.setItem("activities", JSON.stringify(workouts));
   };
+
+  // editWorkout(title: string, type: string, date: string, distance: number, time: any) {
+  //   this.newWorkout.value.title = title;
+  //   this.newWorkout.value.type = type;
+  //   this.newWorkout.value.date = date;
+  //   this.newWorkout.value.distance = distance;
+  //   this.newWorkout.value.time = time;
+  //   this.visible = true;
+  // }
+
+
+
+
+
+
+
 
 
 // Fim do componente
