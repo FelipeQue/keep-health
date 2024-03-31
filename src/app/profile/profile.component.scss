@@ -1,7 +1,31 @@
 @import '../../assets/styles/mixins';
 
+
+@media screen and (max-width: 479px) {
+    .profile-page {
+        padding-top: 6.4em;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+    .profile-page {
+        padding-top: 6.5em;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .profile-page {
+        padding-top: 4em;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .profile-page {
+        padding-top: 4em;
+    }
+}
+
 .profile-page {
-    padding-top: 10vh;
     background-color: white;
 }
 

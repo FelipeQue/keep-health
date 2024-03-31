@@ -1,8 +1,37 @@
 @import '../../assets/styles/variables';
 @import '../../assets/styles/mixins';
 
+@media screen and (max-width: 479px) {
+    .diet-home {
+        padding-top: 6.01em;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+    .diet-home {
+        padding-top: 6.01em;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .diet-home {
+        padding-top: 4em;
+    }
+    #diet-search {
+        width: 70vw;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .diet-home {
+        padding-top: 4em;
+    }
+    #diet-search {
+        width: 50vw;
+    }
+}
+
 .diet-home {
-    padding-top: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,7 +44,6 @@
     background-color: #f5f5f5;
     border-radius: 8px;
     padding: 20px;
-    width: 50vw;
     font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
     input {
         width: 30vw;
@@ -61,7 +89,9 @@
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     padding: 10px;
-    max-width: 260px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 280px;
     margin: 0 auto;
     font-family: 'Roboto', sans-serif;
     &:hover {
@@ -77,10 +107,11 @@
     justify-content: space-between;
     img {
         width: 1.8em;
-        padding: 10px;
         opacity: .5;
-    }
-}
+    };
+    padding-top: 5px;
+    padding-bottom: 5px;
+};
 
 .card-name {
     font-size: 1.2rem;
@@ -88,25 +119,30 @@
     margin-bottom: 10px;
     color: black;
     border-radius: 10px;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 8px;
     margin: 0 auto;
     width: 90%;
     text-transform: uppercase;
 }
 
 .card-img {
-    width: 92%;
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 100%;
     img {
         width: 240px;
         height: 160px;
         border-radius: 10px;
         object-fit: cover;
         margin-bottom: 10px;
-    }
-}
+    };
+};
 
 .card-description {
-    width: 86%;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100%;
     list-style: none;
     text-align: left;
     background-color: rgba(249, 249, 249, 0.8);

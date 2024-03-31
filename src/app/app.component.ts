@@ -249,11 +249,6 @@ export class AppComponent {
 
   constructor(private router: Router){
     localStorage.setItem('foodList',JSON.stringify(this.foodList));
-    console.log("Lista de alimentos salva com sucesso no Local Storage.");
-
-    // Atenção: aqui estamos substituindo os dados que porventura estiverem:
-
-    
   };
 
 
@@ -267,13 +262,3 @@ export class AppComponent {
 
 // Fim do componente
 };
-
-// SOBRE O ERRO "LOCAL STORAGE NOT DEFINED":
-  // Lá no angular.json, onde tem:
-  // "development": {
-  //   "optimization": false,
-  //   "extractLicenses": false,
-  //   "sourceMap": true,
-  //   "ssr": false, <- eu acrescentei essa linha para resolver o problema do localStorage not defined.
-  //   "prerender": false <- eu acrescentei essa outra linha para resolver o problema do localStorage not defined.
-  // }
