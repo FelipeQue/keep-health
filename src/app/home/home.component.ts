@@ -53,8 +53,7 @@ export class HomeComponent {
       let distance = typeof this.newWorkout.value.distance === 'number' ? this.newWorkout.value.distance : 0;
 
       if (this.editingWorkout) {
-        // Editar:
-        // let index = workouts.indexOf(this.editingWorkout);
+        // Caso esteja editando uma atividade:
         let index = workouts.findIndex((workout: { title: any; type: any; date: any; distance: any; time: any; }) => 
           workout.title == this.editingWorkout.title &&
           workout.type == this.editingWorkout.type &&
@@ -67,7 +66,7 @@ export class HomeComponent {
         }
         localStorage.setItem("activities", JSON.stringify(workouts));
       } else {
-        // Adicionar novo:
+        // Adicionar novo exercício:
       this.addWorkout(this.newWorkout.value.title, this.newWorkout.value.type, this.newWorkout.value.date, distance, this.newWorkout.value.time);
       this.newWorkout.reset();
       }
@@ -108,14 +107,37 @@ export class HomeComponent {
     localStorage.setItem("activities", JSON.stringify(workouts));
   };
 
-
-  // Adiciona a funcionalidade de EDITAR o exercício pelo card.
+  // Chama a funcionalidade de editar o exercício através do card:
   openWorkout(workout: any) {
     this.editingWorkout = workout;
     this.newWorkout.setValue(workout);
     this.visible = true;
   };
 
+  deleteWorkout() {
+    if (this.editingWorkout) {
+      if (confirm("Tem certeza que deseja apagar essa atividade? Esta ação será irreversível.")) {
+      let workouts = this.getWorkouts();
+      let index = workouts.findIndex((workout: { title: any; type: any; date: any; distance: any; time: any; }) => 
+        workout.title === this.editingWorkout.title &&
+        workout.type === this.editingWorkout.type &&
+        workout.date === this.editingWorkout.date &&
+        workout.distance === this.editingWorkout.distance &&
+        workout.time === this.editingWorkout.time
+      );
+      if (index > -1) {
+        workouts.splice(index, 1);
+        localStorage.setItem("activities", JSON.stringify(workouts));
+      }
+      this.newWorkout.reset();
+      this.editingWorkout = null;
+      this.visible = false;
+      this.listOfWorkouts = this.getWorkouts();
+    }
+    }
+  };
+
+  
 
 
 

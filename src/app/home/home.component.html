@@ -35,6 +35,9 @@
 
             <ng-template pTemplate="footer">
                 <p-button (click)="visible = false" type="cancel" severity="secondary" label="Cancelar"></p-button>
+
+                <p-button *ngIf="editingWorkout" (click)="deleteWorkout()" severity="danger" label="Apagar"></p-button>
+
                 <p-button (click)="saveWorkout()" type="submit" label="Salvar"></p-button>
             </ng-template>
         
