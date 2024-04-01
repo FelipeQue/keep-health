@@ -2,7 +2,7 @@ import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { provideAnimations, provideNoopAnimations } from '@angular/platform-browser/animations';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DateFormatPipe } from '../pipes/date-format.pipe';
 
@@ -26,9 +26,9 @@ export class HomeComponent {
   listOfWorkouts = this.getWorkouts();
 
   newWorkout = new FormGroup({
-    title: new FormControl(''),
-    type: new FormControl(''),
-    date: new FormControl(''),
+    title: new FormControl('', Validators.required),
+    type: new FormControl('', Validators.required),
+    date: new FormControl('', Validators.required),
     distance: new FormControl(0),
     time: new FormControl(''),
   });
