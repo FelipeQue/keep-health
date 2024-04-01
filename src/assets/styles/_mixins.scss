@@ -1,0 +1,23 @@
+
+@mixin flex-column-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-column-left {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+@mixin container-header {
+    width: 100%;
+    background-color: #0093E9;
+    background-image: $gradientMain;
+    color: #ffffff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    text-transform: uppercase; 
+}

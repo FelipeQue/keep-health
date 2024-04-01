@@ -8,7 +8,7 @@ import { DOCUMENT } from '@angular/common';
   standalone: true,
   imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.scss'
 })
 
 export class LoginComponent implements OnInit {

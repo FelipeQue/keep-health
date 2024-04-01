@@ -15,6 +15,6 @@ export class AgeFromDatePipe implements PipeTransform {
       age--;
     }
     return age;
-  }
+  };
 
-}
+};

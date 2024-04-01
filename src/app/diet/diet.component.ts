@@ -8,7 +8,7 @@ import { Router, RouterModule } from '@angular/router';
   standalone: true,
   imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './diet.component.html',
-  styleUrl: './diet.component.css'
+  styleUrl: './diet.component.scss'
 })
 export class DietComponent {
 

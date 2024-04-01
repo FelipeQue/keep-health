@@ -1,0 +1,87 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+#login-container {
+    @include flex-column-center;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    margin: 0 auto;
+    margin-top: 5%;
+    max-width: 500px;
+    height: auto;
+    padding-bottom: 20px;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.login-header {
+    @include container-header;
+    text-align: center;
+    padding: 5px 0;
+}
+
+#login-form {
+    @include flex-column-center;
+    width: 100%;
+    padding-top: 10px;
+}
+
+#login-inputs {
+    @include flex-column-left;
+    width: 60%;
+    margin-bottom: 10px;
+    label {
+        text-align: left;
+        padding-top: 10px;
+        padding-bottom: 3px;
+    };
+    input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+}
+
+.login-button button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    &:hover {
+        background-color: #0056b3;
+    }
+}
+
+#bttn-forgot {
+    background-color:#80D0C7;
+    &:hover {
+        background-color: #4FAE9B;
+    }
+}
+
+.login-link {
+    padding-top: 10px;
+    a {
+        text-decoration: none;
+        font-weight: 600;
+        color: #007bff;
+        &:hover {
+            color: #0056b3;
+        };
+        &:active {
+            color: #79BAFA;
+        };
+        &:visited {
+            &:hover {
+                color: #0056b3;
+            };
+            &:active {
+                color: #79BAFA;
+            }
+        }
+    }
+}

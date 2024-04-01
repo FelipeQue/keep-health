@@ -1,9 +1,99 @@
-
 <div id="home-page">
-    
-<div id="home-container">
-<p>Boas vindas ao Keep Health!</p>
-<p>Não sabe por onde começar? Experimente dar uma olhadinha na seção <em>Dietas</em> através do menu superior.</p>
-</div>
 
-</div>
+    <div id="home-container">
+
+        <p-button (click)="showDialog()" icon="pi pi-external-link" label="Adicionar atividade" size="large"></p-button>
+
+        <p-dialog [(visible)]="visible" [breakpoints]="{ '480px': '100vw','768px': '80','1024px': '70vw' }"
+            [style]="{width: '60vw'}">
+
+            <ng-template class="custom-header" pTemplate="header">
+                <p *ngIf="editingWorkout == null">Adicione uma nova atividade</p>
+                <p *ngIf="editingWorkout">Modifique esta atividade</p>
+            </ng-template>
+
+            <div [formGroup]="newWorkout" class="add-workout-form">
+
+                <label for="workout-type">Escolha o tipo do exercício*:</label>
+                <select name="workout-type" id="workout-type" formControlName="type" [ngClass]="{'error-border': (newWorkout.controls.type.dirty ||
+                newWorkout.controls.type.touched) &&
+                newWorkout.controls.type.errors}">
+                    <option *ngFor="let workoutType of workoutTypes" [ngValue]="workoutType.name">
+                        {{ workoutType.name }}
+                </select>
+                <span class="error-message" *ngIf="(newWorkout.controls.type.dirty ||
+            newWorkout.controls.type.touched) &&
+            newWorkout.controls.type.errors &&
+            newWorkout.controls.type.errors['required']">Preencha a categoria da atividade realizada</span>
+
+                <label for="workout-title">Nome ou descrição da atividade*:</label>
+                <input type="text" id="workout-title" name="workout-title" formControlName="title" [ngClass]="{'error-border': (newWorkout.controls.title.dirty ||
+                newWorkout.controls.title.touched) &&
+                newWorkout.controls.title.errors}" />
+                <span class="error-message" *ngIf="(newWorkout.controls.title.dirty ||
+            newWorkout.controls.title.touched) &&
+            newWorkout.controls.title.errors &&
+            newWorkout.controls.title.errors['required']">Preencha o nome ou descrição da atividade</span>
+
+                <label for="workout-date">Data realizada*:</label>
+                <input type="date" id="workout-date" name="workout-date" formControlName="date" [ngClass]="{'error-border': (newWorkout.controls.date.dirty ||
+                newWorkout.controls.date.touched) &&
+                newWorkout.controls.date.errors}" />
+                <span class="error-message" *ngIf="(newWorkout.controls.date.dirty ||
+            newWorkout.controls.date.touched) &&
+            newWorkout.controls.date.errors &&
+            newWorkout.controls.date.errors['required']">Preencha a data</span>
+
+                <label for="workout-distance">Distância (em metros): <em>opcional</em></label>
+                <input type="number" id="workout-distance" name="workout-distance" formControlName="distance">
+
+                <label for="workout-time">Tempo (no formato hh:mm): <em>opcional</em></label>
+                <input type="time" id="workout-time" name="workout-time" formControlName="time">
+            </div>
+
+            <ng-template pTemplate="footer">
+                <p-button (click)="visible = false" type="cancel" severity="secondary" label="Cancelar"></p-button>
+
+                <p-button *ngIf="editingWorkout" (click)="deleteWorkout()" severity="danger" label="Apagar"></p-button>
+
+                <p-button (click)="saveWorkout()" type="submit" label="Salvar"></p-button>
+            </ng-template>
+
+        </p-dialog>
+
+    </div>
+
+    <div class="rendered-list">
+        <div *ngFor="let activity of listOfWorkouts" (click)="openWorkout(activity)">
+            <div class="workout-card">
+                <div class="card-header">
+                    <h3 class="card-date">{{activity.date| dateFormat}}</h3>
+                    <img src="../../assets/images/keep-health-logo-circle.png">
+                </div>
+
+                <div class="card-img">
+                    <img *ngIf="activity.type == 'Caminhada'" [src]="workoutTypes[0].image" [alt]="activity.type">
+                    <img *ngIf="activity.type == 'Corrida'" [src]="workoutTypes[1].image" [alt]="activity.type">
+                    <img *ngIf="activity.type == 'Natação'" [src]="workoutTypes[2].image" [alt]="activity.type">
+                    <img *ngIf="activity.type == 'Bicicleta'" [src]="workoutTypes[3].image" [alt]="activity.type">
+                    <img *ngIf="activity.type == 'Dança'" [src]="workoutTypes[4].image" [alt]="activity.type">
+                    <img *ngIf="activity.type == 'Musculação'" [src]="workoutTypes[5].image" [alt]="activity.type">
+                    <img *ngIf="activity.type == 'Esporte'" [src]="workoutTypes[6].image" [alt]="activity.type">
+                    <img *ngIf="activity.type == 'Ioga'" [src]="workoutTypes[7].image" [alt]="activity.type">
+
+                </div>
+
+
+                <span class="card-description">{{activity.title}}</span>
+                <span *ngIf="activity.distance" class="card-description">Distância: {{activity.distance}} m</span>
+                <span *ngIf="activity.time" class="card-description">Tempo: {{activity.time}}</span>
+                <div class="card-type"> {{activity.type}} </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <footer class="footer" *ngIf="listOfWorkouts[0]"><a href="https://www.freepik.com/author/stories">Imagens criadas por Storyset</a> lá no Freepik.</footer>

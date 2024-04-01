@@ -1,26 +1,26 @@
-import { Component, Inject, InjectionToken } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, Inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, CommonModule],
   templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.css',
+  styleUrl: './cadastro.component.scss',
 })
 export class CadastroComponent {
 
   signupInfo = new FormGroup({
-    userName: new FormControl(''),
-    userEmail: new FormControl(''),
-    userDob: new FormControl(''),
-    userWeight: new FormControl(0),
-    userHeight: new FormControl(0),
-    userCep: new FormControl(''),
-    userPassword: new FormControl(''),
-    confirmPassword: new FormControl(''),
+    userName: new FormControl('', Validators.required),
+    userEmail: new FormControl('', Validators.required),
+    userDob: new FormControl('', Validators.required),
+    userWeight: new FormControl(0, [Validators.required, Validators.min(1)]),
+    userHeight: new FormControl(0, [Validators.required, Validators.min(1)]),
+    userCep: new FormControl('', Validators.required),
+    userPassword: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(4)]),
   });
 
   localStorage;

@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
   standalone: true,
   imports: [],
   templateUrl: './diet-detail.component.html',
-  styleUrl: './diet-detail.component.css'
+  styleUrl: './diet-detail.component.scss'
 })
 export class DietDetailComponent {
 
