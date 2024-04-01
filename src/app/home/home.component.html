@@ -8,21 +8,22 @@
             [breakpoints]="{ '480px': '100vw','768px': '80','1024px': '70vw' }" [style]="{width: '60vw'}">
 
             <ng-template class="custom-header" pTemplate="header">
-                <p>Adicione uma nova atividade</p>
+                <p *ngIf="editingWorkout == null">Adicione uma nova atividade</p>
+                <p *ngIf="editingWorkout">Modifique esta atividade</p>
             </ng-template>
             
             <div [formGroup]="newWorkout" class="add-workout-form">
 
-                <label for="workout-type">Escolha o tipo do exercício:</label>
+                <label for="workout-type">Escolha o tipo do exercício*:</label>
                 <select name="workout-type" id="workout-type" formControlName="type">
                     <option *ngFor="let workoutType of workoutTypes" [ngValue]="workoutType.name">
                         {{ workoutType.name }}
                 </select>
 
-                <label for="workout-title">Nome ou descrição da atividade:</label>
+                <label for="workout-title">Nome ou descrição da atividade*:</label>
                 <input type="text" id="workout-title" name="workout-title" formControlName="title">
 
-                <label for="workout-date">Data realizada:</label>
+                <label for="workout-date">Data realizada*:</label>
                 <input type="date" id="workout-date" name="workout-date" formControlName="date">
 
                 <label for="workout-distance">Distância (em metros): <em>opcional</em></label>
@@ -42,7 +43,7 @@
     </div>
 
     <div class="rendered-list">
-        <div *ngFor="let activity of listOfWorkouts">
+        <div *ngFor="let activity of listOfWorkouts" (click)="openWorkout(activity)">
             <div class="workout-card">
                 <div class="card-header">
                     <h3 class="card-date">{{activity.date| dateFormat}}</h3>

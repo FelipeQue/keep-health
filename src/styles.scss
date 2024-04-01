@@ -18,6 +18,15 @@
     };
 };
 
+.p-dialog .p-dialog-header {
+    background: $gradientMain;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+    font-size: 1em;
+}
+
 .p-button-label {
     font-size: 1em;
     color: #ffffff;
@@ -30,10 +39,11 @@
 }
 
 .p-dialog-content {
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     display: flex;
     flex-direction: column;
     padding: 20%;
-    padding-top: 0;
+    padding-top: 10px;
     padding-bottom: 35px;
     input {
         padding: 10px;

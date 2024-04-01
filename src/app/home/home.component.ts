@@ -19,6 +19,8 @@ export class HomeComponent {
   visible: boolean = false;
   showDialog() {
     this.visible = true;
+    this.newWorkout.reset();
+    this.editingWorkout = null;
   }
 
   listOfWorkouts = this.getWorkouts();
@@ -42,16 +44,36 @@ export class HomeComponent {
     {name: "Ioga", image: "../../assets/images/workout-yoga.jpg"}
   ];
 
+  editingWorkout: any = null;
+
   saveWorkout() {
     if (this.newWorkout.value.title && this.newWorkout.value.type && this.newWorkout.value.date) {
       let workouts = this.getWorkouts();
 
       let distance = typeof this.newWorkout.value.distance === 'number' ? this.newWorkout.value.distance : 0;
 
+      if (this.editingWorkout) {
+        // Editar:
+        // let index = workouts.indexOf(this.editingWorkout);
+        let index = workouts.findIndex((workout: { title: any; type: any; date: any; distance: any; time: any; }) => 
+          workout.title == this.editingWorkout.title &&
+          workout.type == this.editingWorkout.type &&
+          workout.date == this.editingWorkout.date &&
+          workout.distance == this.editingWorkout.distance &&
+          workout.time == this.editingWorkout.time
+        );
+        if (index > -1) {
+          workouts[index] = this.newWorkout.value;
+        }
+        localStorage.setItem("activities", JSON.stringify(workouts));
+      } else {
+        // Adicionar novo:
       this.addWorkout(this.newWorkout.value.title, this.newWorkout.value.type, this.newWorkout.value.date, distance, this.newWorkout.value.time);
       this.newWorkout.reset();
+      }
       this.visible = false;
       this.listOfWorkouts = this.getWorkouts();
+      this.editingWorkout = null;
     }
     else {
       alert("Preencha todos os campos obrigatórios.");
@@ -86,15 +108,13 @@ export class HomeComponent {
     localStorage.setItem("activities", JSON.stringify(workouts));
   };
 
-  // editWorkout(title: string, type: string, date: string, distance: number, time: any) {
-  //   this.newWorkout.value.title = title;
-  //   this.newWorkout.value.type = type;
-  //   this.newWorkout.value.date = date;
-  //   this.newWorkout.value.distance = distance;
-  //   this.newWorkout.value.time = time;
-  //   this.visible = true;
-  // }
 
+  // Adiciona a funcionalidade de EDITAR o exercício pelo card.
+  openWorkout(workout: any) {
+    this.editingWorkout = workout;
+    this.newWorkout.setValue(workout);
+    this.visible = true;
+  };
 
 
 
