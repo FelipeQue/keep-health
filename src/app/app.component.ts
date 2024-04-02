@@ -14,16 +14,6 @@ export class AppComponent {
   title = 'keep-health';
 
   foodList: any[] = [
-
-      // {
-      //    id: 1,
-      //    name: "Abacate",
-      //    description: "...",
-      //    qttCalories: 0,
-      //    qttDaysFeed: 3,
-      //    imageLink: ""
-      //  },
-
        {
         id: 1,
         name: "batata",
@@ -251,10 +241,9 @@ export class AppComponent {
     localStorage.setItem('foodList',JSON.stringify(this.foodList));
   };
 
-
   // Para fazer com que o sidebar não apareça nas telas de login e cadastro (em combinação com um *ngIf no HTML):
   get isAuthPage(): boolean {
-    const authPages = ['/login', '/register', '/cadastro', '/'];
+    const authPages = ['/login', '/register', '/signup', '/cadastro', '/'];
     return authPages.includes(this.router.url);
   }
 

@@ -20,8 +20,6 @@ export class LoginComponent implements OnInit {
 
   users: any[] = [];
 
-  // Abaixo é utilizado o Inject e DOCUMENT (importados mais acima) para evitar o erro de localStorage. Ao que parece o localStorage, por ser da API do navegador, não consegue ser acessado pelo servidor, então por mais o que código ficasse totalmente funcional, eu recebia no terminal a mensagem de erro "ERROR ReferenceError: localStorage is not defined". Encontramos, então, este workaround:
-
   localStorage;
   constructor(private router: Router, @Inject(DOCUMENT) private document: Document) {
     this.localStorage = document.defaultView?.localStorage;
@@ -33,7 +31,6 @@ export class LoginComponent implements OnInit {
   };
 
   newUser: any = {
-    id: "teste123",
     name: "Felipe",
     email: "felipe@mail.com",
     dateOfBirth: "1983-10-21",

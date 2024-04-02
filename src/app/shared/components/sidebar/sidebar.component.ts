@@ -24,7 +24,7 @@ export class SidebarComponent {
     this.userDatabase = updatedUsers;
     localStorage.setItem("userDatabase", JSON.stringify(this.userDatabase));
     this.router.navigate(["login"]);
-    console.log("Logout realizado.")
-  }
+    alert("Logout realizado com sucesso.");
+  };
 
-}
+};
