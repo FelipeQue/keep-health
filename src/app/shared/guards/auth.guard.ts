@@ -12,10 +12,8 @@ export const authGuard: CanActivateFn = (route, state) => {
     };
   };
   if (user) {
-    // console.log("Guarda liberou!");
     return true;
   } else {
-    // console.log("Guarda não deixou!");
     router.navigate(["login"]);
     return false;
   };

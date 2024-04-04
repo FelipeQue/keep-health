@@ -2,18 +2,47 @@
 @import '../../../assets/styles/mixins';
 
 @media screen and (max-width: 480px) {
+    #diet-detail-page {
+        padding-top: 5em;
+    }
+    .diet-detail-container {
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
     .diet-detail-body {
         @include flex-column-center;
+    }
+    .image {
+        margin-right: 20px;
     }
 }
 
 @media screen and (min-width: 480px) and (max-width: 767px) {
+    #diet-detail-page {
+        padding-top: 4.5em;
+    }
+    .diet-detail-container {
+        margin-left: 0;
+        margin-right: 0;
+    }
     .diet-detail-body {
         @include flex-column-center;
     }
+
+    .image {
+        margin-right: 20px;
+    }
+
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
+    #diet-detail-page {
+        padding-top: 10vh;
+    }
+    .diet-detail-container {
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
     .diet-detail-body {
         display: flex;
         flex-direction: row;
@@ -22,6 +51,13 @@
 }
 
 @media screen and (min-width: 1025px) {
+    #diet-detail-page {
+        padding-top: 10vh;
+    }
+    .diet-detail-container {
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
     .diet-detail-body {
         display: flex;
         flex-direction: row;
@@ -30,7 +66,6 @@
 }
 
 #diet-detail-page {
-    padding-top: 10vh;
     display: flex;
     justify-content: center;
 }
@@ -39,8 +74,6 @@
     @include flex-column-center;
     background-color: #f5f5f5;
     border-radius: 8px;
-    margin-left: 5vw;
-    margin-right: 5vw;
     margin-top: 5%;
     height: auto;
     font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

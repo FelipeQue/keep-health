@@ -21,7 +21,6 @@ export class DietDetailComponent {
     if (!!storage) {
       return JSON.parse(storage);
     } else {
-      console.log("Não foi encontrada lista de alimentos.")
       return [];
     };
   };

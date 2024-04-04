@@ -44,11 +44,11 @@ export class LoginComponent implements OnInit {
   createUser() {
     let userDatabase = this.getStorage();
     if (userDatabase.find((user: { email: string; }) => user.email == this.newUser.email)) {
-      // console.log("Pessoa usuária já cadastrada.");
+      // Pessoa usuária placeholder já estava cadastrada.
     } else {
       userDatabase.push(this.newUser);
       this.localStorage?.setItem("userDatabase", JSON.stringify(userDatabase));
-      console.log("Pessoa usuária cadastrada com sucesso.");
+      // Pessoa usuária placeholder cadastrada com sucesso.
     }
 
   };
@@ -89,13 +89,10 @@ export class LoginComponent implements OnInit {
           this.users = updatedUsers;
           this.localStorage?.setItem("userDatabase", JSON.stringify(this.users));
           this.router.navigate(["home"]);
-          console.log("Login realizado.")
-
         } else {
           alert("Senha incorreta. Verifique se digitou corretamente.");
         };
       } else {
-        // console.log("E-mail não encontrado.")
         alert("Não encontramos uma conta associada a esse e-mail. Verifique se digitou corretamente ou crie uma nova conta.")
       };
     } else {
@@ -114,8 +111,6 @@ export class LoginComponent implements OnInit {
       let userFound = this.checkEmail();
       if (userFound) {
         let userDatabase = this.getStorage();
-        console.log(userFound);
-        
         const updatedUsers = userDatabase.map((user: { email: any; }) => {
           if (user.email === userFound.email) {
             return { ...user, password: "a1b2c4d4" };

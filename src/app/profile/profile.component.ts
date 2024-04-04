@@ -22,7 +22,6 @@ export class ProfileComponent {
     if (!!users) {
       return JSON.parse(users);
     } else {
-      console.log("Não foi encontrado nenhum usuário.")
       return [];
     };
   };
@@ -46,10 +45,10 @@ export class ProfileComponent {
       {
         next: (response): void => {
           this.address = response;
-          console.log(response);
+          // console.log(response);
         },
         error: (error) => {
-          console.error(error);
+          // console.error(error);
         }
       }
     )
