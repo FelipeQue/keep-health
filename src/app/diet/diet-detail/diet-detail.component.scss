@@ -2,20 +2,32 @@
 @import '../../../assets/styles/mixins';
 
 @media screen and (max-width: 480px) {
+    .diet-detail-body {
+        @include flex-column-center;
+    }
+}
 
-  }
-  
-  @media screen and (min-width: 480px) and (max-width: 767px) {
+@media screen and (min-width: 480px) and (max-width: 767px) {
+    .diet-detail-body {
+        @include flex-column-center;
+    }
+}
 
-  }
-  
-  @media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .diet-detail-body {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+}
 
-  }
-  
-  @media screen and (min-width: 1025px) {
-
-  }
+@media screen and (min-width: 1025px) {
+    .diet-detail-body {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+}
 
 #diet-detail-page {
     padding-top: 10vh;
@@ -39,20 +51,16 @@
     @include container-header;
     height: fit-content;
     margin-bottom: 10px;
+
     h2 {
         margin-left: 20px;
     }
 }
 
-.diet-detail-body {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
 .image {
     margin-left: 20px;
     margin-top: 10px;
+
     img {
         width: 300px;
         height: 200px;
@@ -75,16 +83,18 @@
     margin-top: -10px;
     padding-right: 10px;
     margin-right: 10px;
+
     ul {
         list-style: none;
-    };
+    }
+
     li {
         margin-top: 0.2em;
     }
 }
 
 button {
-    background-color:#80D0C7;
+    background-color: #80D0C7;
     color: #ffffff;
     border: none;
     border-radius: 4px;
@@ -93,6 +103,7 @@ button {
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 20px;
+
     &:hover {
         background-color: #4FAE9B;
     }
