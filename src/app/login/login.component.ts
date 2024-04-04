@@ -65,9 +65,6 @@ export class LoginComponent implements OnInit {
     };
   };
 
-  // Quando o usuário clicar em ‘Entrar’ será validado se o usuário está cadastrado (comparando o email e senha com os dados da localStorage).
-  // Caso o usuário esteja cadastrado, redirecionar para a ‘home'; senão, exibir um alerta dizendo 'Usuário ou senha inválidos’;
-
   login() {
     // Verifica se os dois campos foram preenchidos:
     if (this.loginInfo.value.userEmail && this.loginInfo.value.userPassword) {
@@ -126,9 +123,6 @@ export class LoginComponent implements OnInit {
       alert("Preencha o campo e-mail.")
     };
   };
-
-
-
 
   // Fim do componente
 };
