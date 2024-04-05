@@ -29,9 +29,6 @@ export class CadastroComponent {
     this.localStorage = document.defaultView?.localStorage;
   };
 
-
-  // Botão cadastrar: se clicado, com os campos todos preenchidos e os inputs Senha e Confirmar Senha com os mesmos valores, irá cadastrar o usuário informado (colocando seu email e senha na localStorage na lista de usuários cadastrados)
-
   signup() {
     // Validar se todos os campos foram preenchidos:
     if (this.signupInfo.value.userName && this.signupInfo.value.userEmail && this.signupInfo.value.userDob && this.signupInfo.value.userWeight && this.signupInfo.value.userHeight && this.signupInfo.value.userCep && this.signupInfo.value.userPassword && this.signupInfo.value.confirmPassword) {
