@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { provideAnimations, provideNoopAnimations } from '@angular/platform-browser/animations';
@@ -34,14 +34,14 @@ export class HomeComponent {
   });
 
   workoutTypes = [
-    {name: "Caminhada", image: "../../assets/images/workout-walk.jpg"},
-    {name: "Corrida", image: "../../assets/images/workout-run.jpg"},
-    {name: "Natação", image: "../../assets/images/workout-swim.jpg"},
-    {name: "Bicicleta", image: "../../assets/images/workout-bike.jpg"},
-    {name: "Dança", image: "../../assets/images/workout-dance.jpg"},
-    {name: "Musculação", image: "../../assets/images/workout-weights.jpg"},
-    {name: "Esporte", image: "../../assets/images/workout-sports.jpg"},
-    {name: "Ioga", image: "../../assets/images/workout-yoga.jpg"}
+    {name: "Caminhada", image: "../../assets/images/workout-walk.png"},
+    {name: "Corrida", image: "../../assets/images/workout-run.png"},
+    {name: "Natação", image: "../../assets/images/workout-swim.png"},
+    {name: "Bicicleta", image: "../../assets/images/workout-bike.png"},
+    {name: "Dança", image: "../../assets/images/workout-dance.png"},
+    {name: "Musculação", image: "../../assets/images/workout-weights.png"},
+    {name: "Esporte", image: "../../assets/images/workout-sports.png"},
+    {name: "Ioga", image: "../../assets/images/workout-yoga.png"}
   ];
 
   editingWorkout: any = null;
@@ -136,14 +136,6 @@ export class HomeComponent {
     }
     }
   };
-
-  
-
-
-
-
-
-
 
 // Fim do componente
 }

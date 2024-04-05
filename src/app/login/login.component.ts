@@ -20,8 +20,6 @@ export class LoginComponent implements OnInit {
 
   users: any[] = [];
 
-  // Abaixo é utilizado o Inject e DOCUMENT (importados mais acima) para evitar o erro de localStorage. Ao que parece o localStorage, por ser da API do navegador, não consegue ser acessado pelo servidor, então por mais o que código ficasse totalmente funcional, eu recebia no terminal a mensagem de erro "ERROR ReferenceError: localStorage is not defined". Encontramos, então, este workaround:
-
   localStorage;
   constructor(private router: Router, @Inject(DOCUMENT) private document: Document) {
     this.localStorage = document.defaultView?.localStorage;
@@ -33,7 +31,6 @@ export class LoginComponent implements OnInit {
   };
 
   newUser: any = {
-    id: "teste123",
     name: "Felipe",
     email: "felipe@mail.com",
     dateOfBirth: "1983-10-21",
@@ -47,11 +44,11 @@ export class LoginComponent implements OnInit {
   createUser() {
     let userDatabase = this.getStorage();
     if (userDatabase.find((user: { email: string; }) => user.email == this.newUser.email)) {
-      // console.log("Pessoa usuária já cadastrada.");
+      // Pessoa usuária placeholder já estava cadastrada.
     } else {
       userDatabase.push(this.newUser);
       this.localStorage?.setItem("userDatabase", JSON.stringify(userDatabase));
-      console.log("Pessoa usuária cadastrada com sucesso.");
+      // Pessoa usuária placeholder cadastrada com sucesso.
     }
 
   };
@@ -67,9 +64,6 @@ export class LoginComponent implements OnInit {
       return [];
     };
   };
-
-  // Quando o usuário clicar em ‘Entrar’ será validado se o usuário está cadastrado (comparando o email e senha com os dados da localStorage).
-  // Caso o usuário esteja cadastrado, redirecionar para a ‘home'; senão, exibir um alerta dizendo 'Usuário ou senha inválidos’;
 
   login() {
     // Verifica se os dois campos foram preenchidos:
@@ -92,13 +86,10 @@ export class LoginComponent implements OnInit {
           this.users = updatedUsers;
           this.localStorage?.setItem("userDatabase", JSON.stringify(this.users));
           this.router.navigate(["home"]);
-          console.log("Login realizado.")
-
         } else {
           alert("Senha incorreta. Verifique se digitou corretamente.");
         };
       } else {
-        // console.log("E-mail não encontrado.")
         alert("Não encontramos uma conta associada a esse e-mail. Verifique se digitou corretamente ou crie uma nova conta.")
       };
     } else {
@@ -117,8 +108,6 @@ export class LoginComponent implements OnInit {
       let userFound = this.checkEmail();
       if (userFound) {
         let userDatabase = this.getStorage();
-        console.log(userFound);
-        
         const updatedUsers = userDatabase.map((user: { email: any; }) => {
           if (user.email === userFound.email) {
             return { ...user, password: "a1b2c4d4" };
@@ -134,9 +123,6 @@ export class LoginComponent implements OnInit {
       alert("Preencha o campo e-mail.")
     };
   };
-
-
-
 
   // Fim do componente
 };
