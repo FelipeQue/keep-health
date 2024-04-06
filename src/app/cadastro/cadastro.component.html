@@ -99,6 +99,8 @@
             </div>
 
             <label for="user-cep">CEP:</label>
+            <div>
+            <div id="cep-search">
             <input
             id="user-cep"
             name="user-cep"
@@ -109,14 +111,26 @@
             [ngClass]="{'error-border': (signupInfo.controls.userCep.dirty ||
         signupInfo.controls.userCep.touched) &&
         signupInfo.controls.userCep.errors}"
+             (input)="clearAddress()"
             />
+            
+            <button id="cep-button" type="button" (click)="searchAddress()">Pesquisar</button>
+            </div>
+
             <span class="error-message"
             *ngIf="(signupInfo.controls.userCep.dirty ||
             signupInfo.controls.userCep.touched) &&
             signupInfo.controls.userCep.errors &&
             signupInfo.controls.userCep  .errors['required']"
             >Preencha o seu CEP</span>
+            </div>
 
+            <div *ngIf="address" id="user-address">
+                <!-- <label>Endereço:</label> -->
+                {{ address.logradouro }}, {{ address.complemento }} — 
+                {{ address.bairro }} —
+                {{ address.localidade }}/{{ address.uf }}.</div>
+            
             <label for="user-password">Senha:</label>
             <input
             id="user-password"

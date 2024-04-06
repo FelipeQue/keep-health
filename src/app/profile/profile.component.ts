@@ -45,14 +45,13 @@ export class ProfileComponent {
       {
         next: (response): void => {
           this.address = response;
-          // console.log(response);
         },
         error: (error) => {
-          // console.error(error);
         }
       }
-    )
-  }
+    );
+  };
+
   
 
 }

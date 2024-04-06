@@ -1,7 +1,8 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { DOCUMENT, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { AddressService } from '../services/address.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -11,6 +12,8 @@ import { DOCUMENT, CommonModule } from '@angular/common';
   styleUrl: './cadastro.component.scss',
 })
 export class CadastroComponent {
+
+  address: any | undefined;
 
   signupInfo = new FormGroup({
     userName: new FormControl('', Validators.required),
@@ -23,10 +26,7 @@ export class CadastroComponent {
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(4)]),
   });
 
-  localStorage;
-
-  constructor(private router: Router, @Inject(DOCUMENT) private document: Document) {
-    this.localStorage = document.defaultView?.localStorage;
+  constructor(private router: Router, private addressService: AddressService) {
   };
 
   signup() {
@@ -74,16 +74,37 @@ export class CadastroComponent {
   // Função que puxa os dados do localStorage (ou cria um array vazio na ausência de um):
   getStorage() {
     const emptyDatabase: string[] = [];
-    const users = this.localStorage?.getItem("userDatabase");
+    const users = localStorage.getItem("userDatabase");
     if (!!users) {
       return JSON.parse(users);
     } else {
-      this.localStorage?.setItem("userDatabase", JSON.stringify(emptyDatabase));
+      localStorage.setItem("userDatabase", JSON.stringify(emptyDatabase));
       return [];
     };
   };
 
+  searchAddress() {
+    if (this.signupInfo.value.userCep) {
+      this.addressService.getAdress(this.signupInfo.value.userCep).subscribe(
+        {
+          next: (response): void => {
+            this.address = response;
+          },
+          error: (error) => {
+            console.error(error);
+            alert("Tem certeza que digitou um CEP de verdade?")
+          }
+        }
+      );
+    } else {
+      alert("Preencha o campo CEP adequadamente antes de pesquisar.")
+    };
+  };
 
-  
+  clearAddress() {
+    this.address = undefined;
+  };
+
+
   // Fim do componente
 }
